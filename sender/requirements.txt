@@ -1,0 +1,22 @@
+# Sender Requirements for Raspberry Pi
+# Install with: pip install -r requirements_sender.txt
+
+# Core dependencies
+numpy==1.22.4
+matplotlib==3.5.3
+scikit-fuzzy==0.4.2
+
+# Network and processing
+psutil==5.9.0
+python-socketio==5.7.2
+
+# For PocketVNA
+# Note: The PocketVNA API should be installed separately or included in the project
+
+# System dependencies that need to be installed via apt:
+# - libcamera-apps (for video streaming)
+# - ffmpeg (for audio/video handling)
+# - chronyd (for time synchronization)
+# To install these on Raspberry Pi OS:
+# sudo apt-get update
+# sudo apt-get install -y ffmpeg libcamera-apps chrony

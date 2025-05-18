@@ -1,0 +1,34 @@
+# Receiver Requirements for Windows with CUDA
+# Install with: pip install -r requirements_receiver.txt
+
+# Core dependencies
+numpy==1.22.4
+matplotlib==3.7.1
+scipy==1.10.1
+psutil==5.9.5
+
+# GUI and visualization
+tkinter  # Usually comes with Python, no need to install separately
+pillow==9.5.0
+
+# Audio processing
+sounddevice==0.4.6
+librosa==0.10.0
+torchaudio==2.0.2+cu118  # CUDA 11.8 version
+
+# Deep learning
+torch==2.0.1+cu118  # CUDA 11.8 version
+--extra-index-url https://download.pytorch.org/whl/cu118  # For PyTorch CUDA packages
+
+# Networking and data handling
+python-socketio==5.7.2
+websockets==11.0.3
+
+# FFmpeg needs to be installed separately on Windows:
+# Download from: https://ffmpeg.org/download.html#build-windows
+# Add to system PATH
+
+# Additional notes for Windows setup:
+# 1. Ensure CUDA 11.8 or compatible version is installed
+# 2. Add FFmpeg to system PATH
+# 3. Install Microsoft Visual C++ Redistributable if needed

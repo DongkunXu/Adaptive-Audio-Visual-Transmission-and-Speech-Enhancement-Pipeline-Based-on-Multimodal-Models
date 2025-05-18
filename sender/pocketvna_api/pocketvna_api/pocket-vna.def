@@ -1,0 +1,68 @@
+LIBRARY PocketVnaAPI_x64
+
+; Change LIBRARY PocketVnaAPI_x64 and use > lib /def:api\pocket-vna.def /out:PocketVnaAPI_x64.lib /machine:x64 :: to generate *.lib file for VC++
+; Change LIBRARY PocketVnaAPI_x32 and use > lib /def:api\pocket-vna.def /out:PocketVnaAPI_x32.lib /machine:x86
+
+EXPORTS
+        pocketvna_driver_version
+        pocketvna_close
+        pocketvna_result_string
+        pocketvna_set_option
+
+        pocketvna_list_devices
+        pocketvna_free_list
+
+        pocketvna_helper_descriptors_count
+        pocketvna_helper_descriptor_get_path
+        pocketvna_helper_descriptor_get_vid
+        pocketvna_helper_descriptor_get_pid
+        pocketvna_helper_descriptor_get_interface
+        pocketvna_helper_descriptor_get_SN
+        pocketvna_helper_descriptor_get_handler
+
+        pocketvna_get_device_handle_for
+        pocketvna_release_handle
+        pocketvna_get_first_device_handle
+
+        pocketvna_is_transmission_supported
+        pocketvna_is_valid
+        pocketvna_version
+        pocketvna_get_characteristic_impedance
+        pocketvna_get_valid_frequency_range
+        pocketvna_get_reasonable_frequency_range
+
+        pocketvna_single_query
+        pocketvna_multi_query
+        pocketvna_multi_query_with_cproc
+        pocketvna_range_query
+        pocketvna_range_query_with_cproc
+; dfu mode is DEPRECATED for it is not supported by most of customers' Atmel devices
+        pocketvna_enter_dfu_mode
+
+        pocketvna_info_get_firmware_version
+        pocketvna_info_get_param_supported
+        pocketvna_info_get_temperature
+
+        pocketvna_info_get_variable
+        pocketvna_info_set_variable
+
+; DEPRECATED
+        pocketvna_debug_request
+        pocketvna_debug_read_buffer
+        pocketvna_debug_response
+
+; Calibration Stuff
+        pocketvna_rfmath_calibrate_transmission
+        pocketvna_rfmath_calibrate_reflection
+        pocketvna_force_unlock_devices
+; 4 - Port support. New 4-Port devices only
+        pocketvna_4p_scan
+        pocketvna_4p_scan_with_cproc
+        pocketvna_4p_scan_4range_separate
+        pocketvna_4p_scan_separate
+        pocketvna_4p_scan_4range_with_cproc
+        pocketvna_4p_scan_4range
+; pPVNA 6G
+        pocketvna_pVNA6G_set_ctrl_var
+        pocketvna_pVNA6G_get_ctrl_var
+        pocketvna_pVNA6G_get_status

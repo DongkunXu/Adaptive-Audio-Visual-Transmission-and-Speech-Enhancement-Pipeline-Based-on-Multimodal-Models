@@ -1,0 +1,40 @@
+Permission Issues
+
+Sometimes application sees device but can not connect it due lack of permissions. Usually, pocketVna shows RED information on the right-bottom corner and shows orange message box.
+
+pocketVna application uses libudev to access device. 
+Sometimes regular (non-admin) user does not have permission to open/read/write usb device. The main sign of this issue: application sees device but can not connect against it.
+
+You can either 
+  -- Start application via sudo
+  -- Add permission like "666" to corresponsing udev-device. For example in ubuntu it locates somewhere /dev/hidraw*
+  -- Add udev rule. 
+
+------------------------------
+
+udev rule
+On most modern distributions (Ubuntu 14, Fedora 22, OpenSuse it should be located in 
+   /usr/lib/udev/rules.d/  #looks does not exist on some elder distributions like Ubuntu 12
+   /etc/udev/rules.d/
+
+Create a new rule or add into existing one following line
+	SUBSYSTEMS=="usb", ATTRS{idVendor}=="03eb", MODE="0666"
+
+Next command shows udev device info. It shows parametters that could be used exactly "as is" in rule
+udevadm info --path=path/to/device --attribute-walk   
+
+------------------------------
+
+We provide 98-pocketvna-udev.rules file. Just copy it into one of the locations above. And reload udev (or restart the computer)
+To reload udev use the following command:
+  udevadm control --reload && udevadm trigger           # restart udev applying newly created rule
+
+------------------------------
+For convenience there is installPocketVNArule.sh. It installs rules file for you or uninstall it. Call (probably using sudo/su or admin rights)
+	./installPocketVNArule.sh
+And uninstall rule, you can call (probably sudo or admin rights are required)
+	./installPocketVNArule.sh uninstall
+
+
+
+
